@@ -1,3 +1,11 @@
+/**
+ * Java Dictionary v1.0
+ * @author TehCoesy Nguyễn Minh Khôi
+ * @author Cat Nguyễn Quý Thịnh
+ * @since 26/09/2018
+ * @version v1.0
+ */
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -7,20 +15,14 @@ public class DictionaryCommandLine {
     private static List<String> ls_command = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
 
-    public static void init() {
-        ls_command.add("sayHello");
-        ls_command.add("basic");
-        ls_command.add("listAll");
-    }
-
     public static int commandParse(String input) {
         for (String element : ls_command) {
             if (element.compareTo(input) == 0) {
                 switch(ls_command.indexOf(element)) {
                     case 0: m_dictionary.sayHello();  break;
-                    case 1: dictionaryBasic(); break;
+                    case 1: printHelp(); break;
                     case 2: showAllWord(); break;
-                    case 3: break;
+                    case 3: dictionaryBasic(); break;
                 }
                 return 1;
             }
@@ -33,10 +35,11 @@ public class DictionaryCommandLine {
         init();
         String commandLine ;
 
-        m_dictionary.insertFromCommandLine();
-
+        System.out.println("Java Dictionary English-Vietnamese v1.0");
+        System.out.println("'help' for available commands");
         boolean m_Loop = true;
         while (m_Loop) {
+            System.out.print("> ");
             commandLine = scanner.nextLine();
             if (commandLine.compareTo("exit") == 0) {
                 m_Loop = false;
@@ -49,7 +52,21 @@ public class DictionaryCommandLine {
         }
     }
 
+    public static void init() {
+        ls_command.add("sayHello");
+        ls_command.add("help");
+        ls_command.add("listAll");
+        ls_command.add("basic");
+    }
+
     //Commands
+    public static void printHelp() {
+        System.out.println("List of available commands: ");
+        System.out.println("'sayHello' | Self-explanatory");
+        System.out.println("'basic' | Add a new word and list all words in the dictionary.");
+        System.out.println("'listAll' | List all words in the dictionary.");
+    }
+
     public static void dictionaryBasic() {
         m_dictionary.insertFromCommandLine();
         showAllWord();

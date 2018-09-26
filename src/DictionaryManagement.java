@@ -10,9 +10,9 @@ public class DictionaryManagement {
 
     public void insertFromCommandLine() {
         System.out.print("English Word: ");
-        String in1 = scan.next();
+        String in1 = scan.nextLine();
         System.out.print("Explanation: ");
-        String in2 = scan.next();
+        String in2 = scan.nextLine();
         dictionary.addS(in1,in2);
     }
 
