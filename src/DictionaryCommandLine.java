@@ -1,9 +1,9 @@
 /**
- * Java Dictionary v1.0
+ * Java Dictionary v1.2
  * @author TehCoesy Nguyễn Minh Khôi
  * @author Cat Nguyễn Quý Thịnh
  * @since 26/09/2018
- * @version v1.0
+ * @version v1.2
  */
 
 import java.util.ArrayList;
@@ -23,6 +23,8 @@ public class DictionaryCommandLine {
                     case 1: printHelp(); break;
                     case 2: showAllWord(); break;
                     case 3: dictionaryBasic(); break;
+                    case 4: dictionaryAdvanced(); break;
+                    case 5: dictionaryLookup(); break;
                 }
                 return 1;
             }
@@ -35,7 +37,7 @@ public class DictionaryCommandLine {
         init();
         String commandLine ;
 
-        System.out.println("Java Dictionary English-Vietnamese v1.0");
+        System.out.println("Java Dictionary English-Vietnamese v1.2");
         System.out.println("'help' for available commands");
         boolean m_Loop = true;
         while (m_Loop) {
@@ -57,14 +59,19 @@ public class DictionaryCommandLine {
         ls_command.add("help");
         ls_command.add("listAll");
         ls_command.add("basic");
+        ls_command.add("advanced");
+        ls_command.add("lookUp");
     }
 
     //Commands
     public static void printHelp() {
         System.out.println("List of available commands: ");
+        System.out.println("'exit' | Exit the program.");
         System.out.println("'sayHello' | Self-explanatory");
         System.out.println("'basic' | Add a new word and list all words in the dictionary.");
+        System.out.println("'advanced' | Advanced functions.");
         System.out.println("'listAll' | List all words in the dictionary.");
+        System.out.println("'lookUp' | Find a word.");
     }
 
     public static void dictionaryBasic() {
@@ -72,7 +79,17 @@ public class DictionaryCommandLine {
         showAllWord();
     }
 
+    public static void dictionaryAdvanced() {
+        m_dictionary.insertFromFile("dictionary.txt");
+        showAllWord();
+        dictionaryLookup();
+    }
+
     public static void showAllWord() {
         m_dictionary.listAll();
+    }
+
+    public static void dictionaryLookup() {
+        m_dictionary.lookUp();
     }
 }

@@ -1,0 +1,8 @@
+Cat<Meo
+Dog<Cho
+Thinh<Meo
+Minh<Cho
+Leet<Elite
+Book<Sach
+Mouse<Chuot
+Computer<May Tinh
